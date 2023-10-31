@@ -1,4 +1,5 @@
 import 'package:app/screens/login_screen.dart';
+import 'package:app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:app/screens/signup_screen.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Beacon Hills',
-      home: SignupScreen(),
+      home: Splash(),
       theme: ThemeData(
           // This is the theme of your application.
           //
