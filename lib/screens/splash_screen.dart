@@ -29,21 +29,13 @@ class _SplashScreenState extends State<Splash> {
       body: Container(
         width: double.infinity,
         decoration:const BoxDecoration(
-          gradient: LinearGradient(colors: [Colors.blue,Colors.white],
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft)
+          gradient: LinearGradient(colors: [Color.fromARGB(255, 133, 2, 2),Color.fromARGB(246, 1, 15, 26),Color.fromARGB(246, 1, 15, 26),Color.fromARGB(255, 133, 2, 2)],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter)
         ),
-        child:const Column(
+        child:Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-           Icon(Icons.person_2_sharp,
-            size: 100,
-            weight: 60,
-            color: Colors.black,),
-         Text('..BEACON HILLS..',
-           style: TextStyle(fontStyle: FontStyle.italic,
-           fontWeight: FontWeight.bold,
-           fontSize: 35),selectionColor: Color.fromARGB(255, 199, 225, 237), ),
+          children: [Image.asset("images/logo.jpeg",height: 200, width: 200, ),
           ],
         ),
       ),  

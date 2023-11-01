@@ -12,18 +12,18 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BEACON UNIVERSITY'),
+        title: const Text('BEACON HILLS'),
         titleSpacing: 00.0,
         centerTitle: true,
-        surfaceTintColor: Colors.blueGrey,
+        surfaceTintColor: Colors.white,
         backgroundColor: Color.fromARGB(255, 133, 2, 2),
         titleTextStyle: const TextStyle(
           color: Colors.white,
           fontSize: 15,
         ),
-        toolbarHeight: 60,
+        toolbarHeight: 50,
       ),
-      backgroundColor: Color.fromARGB(255, 199, 225, 237),
+      backgroundColor: Color.fromARGB(246, 1, 15, 26),
       body: Padding(
         padding: EdgeInsets.all(30.0),
         child: Column(
@@ -148,7 +148,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     },
                     child: Text('Sign Up'),
                     color: Color.fromARGB(255, 133, 2, 2),
-                    textColor: Colors.black,
+                    textColor: Colors.white,
                   ),
                 ),
                 ButtonBar(
@@ -161,6 +161,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: Text(
                     '*if you have an account*',
                     textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white70),
                   ),
                 ),
                 const SizedBox(
@@ -171,7 +172,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => LoginScreen()));
                     },
-                    child: const Text(' Log in to Existing account')),
+                    child: const Text(' Log in to Existing account',
+                    style: TextStyle(color: Color.fromARGB(255, 133, 2, 2)),)),
               ],
             ),
           ],
