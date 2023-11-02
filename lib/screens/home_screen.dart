@@ -24,30 +24,30 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         toolbarHeight: 50,
       ),
-      drawer: Drawer(
+      drawer: Drawer(backgroundColor: Color.fromARGB(255, 133, 2, 2),
         width: 150,
         child: ListView(
           children: [
             ListTile(
-              tileColor: Colors.white,
-              title: const Text('HOME'),
+              tileColor: const Color.fromARGB(255, 133, 2, 2),
+              title: const Text('HOME'),textColor: Colors.white70,
               onTap: () {
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => LoginScreen()));
               },
             ),
             const ListTile(
-              tileColor: Colors.white,
-              title: Text('PROFILE'),),
+              tileColor: Color.fromARGB(255, 133, 2, 2),
+              title: Text('PROFILE'),textColor: Colors.white70,),
               const ListTile(
-              tileColor: Colors.white,
-              title: Text('SETTINGS'),),
+              tileColor: Color.fromARGB(255, 133, 2, 2),
+              title: Text('SETTINGS'),textColor: Colors.white70,),
               const ListTile(
-              tileColor: Colors.white,
-              title: Text('CONTACT US'),),
+              tileColor: Color.fromARGB(255, 133, 2, 2),
+              title: Text('CONTACT US'),textColor: Colors.white70,),
               const ListTile(
-              tileColor: Colors.white,
-              title: Text('ABOUT US'),),
+              tileColor: Color.fromARGB(255, 133, 2, 2),
+              title: Text('ABOUT US'),textColor: Colors.white70,),
 
           ],
         ),
@@ -68,20 +68,13 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      // bottomNavigationBar: BottomNavigationBar(backgroundColor: Colors.white, iconSize: 20, onTap:(value) => log(5),
-      // items:const [ BottomNavigationBarItem(icon: Icon(Icons.home),
-      // label: 'HOME',
-      //  backgroundColor: Colors.black),
-      //  BottomNavigationBarItem(icon: Icon(Icons.message),
-      // label: 'CHAT',
-      //  backgroundColor: Colors.black),
-      //  BottomNavigationBarItem(icon: Icon(Icons.settings),
-      // label: 'SETTINGS',
-      //  backgroundColor: Colors.black),
-      //  BottomNavigationBarItem(icon: Icon(Icons.person_2),
-      // label: 'PROFILE',
-      //  backgroundColor: Colors.black),
-      //  ],),
+      bottomNavigationBar: BottomNavigationBar(backgroundColor: const Color.fromARGB(255, 133, 2, 2), iconSize: 20, onTap:(value) => log(5),
+      items:const [ BottomNavigationBarItem(icon: Icon(Icons.home),
+      label: 'HOME',
+       backgroundColor: Colors.black),
+       BottomNavigationBarItem(icon: Icon(Icons.message),
+      label: 'CHAT'),
+       ],),
     );
   }
 }
