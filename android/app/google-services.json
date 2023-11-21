@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "674422943561",
+    "project_id": "skudush-f7ff6",
+    "storage_bucket": "skudush-f7ff6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674422943561:android:fe8fa39a5be434eff2b498",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCzdS_baaJ1cFEyUmWXUAIz_aWhfA5l8s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

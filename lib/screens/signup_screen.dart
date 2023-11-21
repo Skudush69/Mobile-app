@@ -6,7 +6,6 @@ class SignupScreen extends StatefulWidget {
   @override
   State<SignupScreen> createState() => _SignupScreenState();
 }
-
 class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       fillColor: Colors.white54,
                       contentPadding: EdgeInsets.all(5),
                       border: OutlineInputBorder(
-                           borderRadius: BorderRadius.all(Radius.circular(400.0)),
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(400.0)),
                           borderSide: BorderSide(width: 1)),
                     ),
                     textAlign: TextAlign.center,
@@ -67,7 +67,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           fillColor: Colors.white54,
                           contentPadding: EdgeInsets.all(5),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(400.0)),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(400.0)),
                               borderSide: BorderSide(width: 1)),
                         ),
                         textAlign: TextAlign.center,
@@ -94,7 +95,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           fillColor: Colors.white54,
                           contentPadding: EdgeInsets.all(5),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(400.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(400.0)),
                             borderSide: BorderSide(width: 1),
                           ),
                         ),
@@ -126,7 +128,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                   AutofillHints.telephoneNumberLocalSuffix),
                           contentPadding: EdgeInsets.all(5),
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(400.0)),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(400.0)),
                             borderSide: BorderSide(width: 1),
                           ),
                         ),
@@ -143,8 +146,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     onPressed: () {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => HomeScreen()));
-                          ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Successfully Created an Account')));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('Successfully Created an Account')));
                     },
                     child: Text('Sign Up'),
                     color: Color.fromARGB(255, 133, 2, 2),
@@ -172,8 +175,10 @@ class _SignupScreenState extends State<SignupScreen> {
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => LoginScreen()));
                     },
-                    child: const Text(' Log in to Existing account',
-                    style: TextStyle(color: Color.fromARGB(255, 133, 2, 2)),)),
+                    child: const Text(
+                      ' Log in to Existing account',
+                      style: TextStyle(color: Color.fromARGB(255, 133, 2, 2)),
+                    )),
               ],
             ),
           ],
