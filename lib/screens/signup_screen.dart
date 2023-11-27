@@ -10,35 +10,30 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BEACON HILLS'),
-        titleSpacing: 00.0,
-        centerTitle: true,
-        surfaceTintColor: Colors.white,
-        backgroundColor: Color.fromARGB(255, 133, 2, 2),
-        titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontSize: 15,
-        ),
-        toolbarHeight: 50,
-      ),
-      backgroundColor: Color.fromARGB(246, 1, 15, 26),
-      body: Padding(
+      backgroundColor:Colors.white,
+      body: 
+      Padding(
         padding: EdgeInsets.all(30.0),
         child: Column(
-          children: [
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Text('SIGN UP',
+          style: TextStyle(fontSize: 50,color: Color.fromARGB(216, 22, 13, 191)),
+          ),
+          const SizedBox(
+            height: 75,
+          ),
             const Row(
               children: [
                 Icon(Icons.person),
                 SizedBox(
                   width: 250,
-                  height: 30,
+                  height: 35,
                   child: TextField(
                     decoration: InputDecoration(
-                      labelText: 'First Name',
-                      hintText: 'Enter your first name',
+                      labelText: 'Name',
+                      hintText: 'Enter your name',
                       filled: true,
-                      fillColor: Colors.white54,
+                      fillColor: Color.fromARGB(87, 21, 204, 15),
                       contentPadding: EdgeInsets.all(5),
                       border: OutlineInputBorder(
                           borderRadius:
@@ -55,16 +50,16 @@ class _SignupScreenState extends State<SignupScreen> {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.person),
+                    Icon(Icons.phone),
                     SizedBox(
                       width: 250,
-                      height: 30,
+                      height: 35,
                       child: TextField(
                         decoration: InputDecoration(
-                          labelText: 'Surname',
-                          hintText: 'Enter your surname',
+                          labelText: 'Phone Number',
+                          hintText: 'Enter your Phone Number',
                           filled: true,
-                          fillColor: Colors.white54,
+                          fillColor:Color.fromARGB(87, 21, 204, 15),
                           contentPadding: EdgeInsets.all(5),
                           border: OutlineInputBorder(
                               borderRadius:
@@ -86,13 +81,13 @@ class _SignupScreenState extends State<SignupScreen> {
                     Icon(Icons.mail),
                     SizedBox(
                       width: 250,
-                      height: 30,
+                      height: 35,
                       child: TextField(
                         decoration: InputDecoration(
                           labelText: 'Email',
                           hintText: 'Enter your Email Address',
                           filled: true,
-                          fillColor: Colors.white54,
+                          fillColor:Color.fromARGB(87, 21, 204, 15),
                           contentPadding: EdgeInsets.all(5),
                           border: OutlineInputBorder(
                             borderRadius:
@@ -115,14 +110,14 @@ class _SignupScreenState extends State<SignupScreen> {
                     Icon(Icons.https),
                     SizedBox(
                       width: 250,
-                      height: 30,
+                      height: 35,
                       child: TextField(
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: 'Password',
                           hintText: 'Enter your Password',
                           filled: true,
-                          fillColor: Colors.white54,
+                          fillColor:Color.fromARGB(87, 21, 204, 15),
                           hintStyle: TextStyle(
                               fontFamily:
                                   AutofillHints.telephoneNumberLocalSuffix),
@@ -138,7 +133,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ],
                 ),
-                SizedBox(height: 25),
+                SizedBox(height: 40),
                 Padding(
                   padding: const EdgeInsets.all(5),
                   child: MaterialButton(
@@ -149,8 +144,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text('Successfully Created an Account')));
                     },
-                    child: Text('Sign Up'),
-                    color: Color.fromARGB(255, 133, 2, 2),
+                    child: Text('REGISTER'),
+                    color: Color.fromARGB(216, 22, 13, 191),
                     textColor: Colors.white,
                   ),
                 ),
@@ -158,13 +153,13 @@ class _SignupScreenState extends State<SignupScreen> {
                   buttonPadding: EdgeInsets.all(8),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 30,
                 ),
                 const SizedBox(
                   child: Text(
                     '*if you have an account*',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white70),
+                    style: TextStyle(color: Color.fromARGB(255, 1, 70, 4)),
                   ),
                 ),
                 const SizedBox(
@@ -176,8 +171,8 @@ class _SignupScreenState extends State<SignupScreen> {
                           builder: (context) => LoginScreen()));
                     },
                     child: const Text(
-                      ' Log in to Existing account',
-                      style: TextStyle(color: Color.fromARGB(255, 133, 2, 2)),
+                      ' Log in',
+                      style: TextStyle(color: Color.fromARGB(216, 22, 13, 191)),
                     )),
               ],
             ),

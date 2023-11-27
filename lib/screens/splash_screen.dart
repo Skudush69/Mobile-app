@@ -29,11 +29,6 @@ class _SplashScreenState extends State<Splash> {
       body: Container(
         width: double.infinity,
         color: Colors.white,
-        // decoration:const BoxDecoration(
-        //   gradient: LinearGradient(colors: [Color.fromARGB(255, 133, 2, 2),Color.fromARGB(246, 1, 15, 26),Color.fromARGB(246, 1, 15, 26),Color.fromARGB(255, 133, 2, 2)],
-        //   begin: Alignment.topCenter,
-        //   end: Alignment.bottomCenter)
-        // ),
         child:Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [Image.asset("images/ahgcc logo.png",height: 200, width: 200, ),

@@ -11,23 +11,16 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BEACON HILLS'),
-        titleSpacing: 00.0,
-        centerTitle: true,
-        surfaceTintColor: Colors.white,
-        backgroundColor: const Color.fromARGB(255, 133, 2, 2),
-        titleTextStyle: const TextStyle(
-          color: Colors.white,
-          fontSize: 15,
-        ),
-        toolbarHeight: 50,
-      ),
-      backgroundColor: const Color.fromARGB(246, 1, 15, 26),
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.all(70.0),
-        child: Column(
-          children: [
+        child: Column( mainAxisAlignment: MainAxisAlignment.center,
+          children: [Text('LOGIN',
+          style: TextStyle(fontSize: 50,color: Color.fromARGB(216, 22, 13, 191)),
+          ),
+          const SizedBox(
+            height: 50,
+          ),
             const Padding(
               padding: EdgeInsets.fromLTRB(20, 15, 0, 15),
             ),
@@ -36,15 +29,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 Icon(Icons.person_2),
                 SizedBox(
                   width: 200,
-                  height: 30,
+                  height: 35,
                   child: TextField(
                     decoration: InputDecoration(
-                        hintText: 'Enter your username',
+                        labelText: 'Name',
+                        hintText: 'Enter your Name',
                         filled: true,
-                        fillColor: Colors.white54,
-                        hintStyle: TextStyle(
-                            fontFamily:
-                                AutofillHints.telephoneNumberLocalSuffix),
+                        fillColor: Color.fromARGB(87, 21, 204, 15),
                         contentPadding: EdgeInsets.all(5),
                         border: OutlineInputBorder(
                             borderRadius:
@@ -57,20 +48,44 @@ class _LoginScreenState extends State<LoginScreen> {
               ],
             ),
              SizedBox(height: 25),
+              const Row(
+              children: [
+                Icon(Icons.phone),
+                SizedBox(
+                  width: 200,
+                  height: 35,
+                  child: TextField(
+                    decoration: InputDecoration(
+                        labelText: 'Phone Number',
+                        hintText: 'Enter your Phone Number',
+                        filled: true,
+                        fillColor: Color.fromARGB(87, 21, 204, 15),
+                        contentPadding: EdgeInsets.all(5),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(400.0)),
+                            borderSide: BorderSide(width: 1))
+                            ),
+                    
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 25),
             const Row(
               children: [
                 Icon(Icons.https),
                 SizedBox(
                   width: 200,
-                  height: 30,
+                  height: 35,
                   child: TextField(
                     obscureText: true,
                     decoration: InputDecoration(
+                      labelText: 'Password',
                       hintText: 'Enter your password',
                       filled: true,
-                      fillColor: Colors.white54,
-                      hintStyle: TextStyle(
-                          fontFamily: AutofillHints.telephoneNumberLocalSuffix),
+                      fillColor: Color.fromARGB(87, 21, 204, 15),
                       contentPadding: EdgeInsets.all(5),
                       border: OutlineInputBorder(
                           borderRadius:
@@ -93,8 +108,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text('Successfully Logged In')));
                 },
-                child: Text('Login'),
-                color: const Color.fromARGB(255, 133, 2, 2),
+                child: Text('SIGN IN'),
+                color: const Color.fromARGB(216, 22, 13, 191),
                 textColor: Colors.white,
               ),
             ),
@@ -108,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text(
                 '*if you dont have an account*',
                 textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white70),
+                style: TextStyle(color: Color.fromARGB(255, 4, 155, 12))
               ),
             ),
             const SizedBox(
@@ -120,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       MaterialPageRoute(builder: (context) => SignupScreen()));
                 },
                 child: const Text(' Create Account',
-                style: TextStyle(color: Color.fromARGB(255, 133, 2, 2)),)),
+                style: TextStyle(color: Color.fromARGB(216, 22, 13, 191)),)),
           ],
         ),
       ),
