@@ -1,13 +1,17 @@
-import 'package:app/screens/login_screen.dart';
 import 'package:app/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:app/screens/signup_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:app/screens/announce_screen.dart';
 
  void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-    // await Firebase.initializeApp();
+    await Firebase.initializeApp(
+      options: FirebaseOptions(
+    apiKey: "AIzaSyDpRSak-SDq5B9YIIELst9y7GoOOtIItcI",
+   appId: "1:677776107304:android:6d8b3332134dabdbde121d",
+    messagingSenderId: "677776107304", 
+    projectId: "ahgcc-99ffd",
+      ),
+    );
    runApp(const MyApp());
  }
 
@@ -38,7 +42,7 @@ class MyApp extends StatelessWidget {
           // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
           useMaterial3: true),
-      //home: const MyHomePage(title: 'Brooklyn University'),
+      //home: const MyHomePage(title: 'AHGCC'),
       debugShowCheckedModeBanner: false,
     );
   }

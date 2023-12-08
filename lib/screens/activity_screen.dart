@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class Announce extends StatefulWidget {
-  const Announce({super.key});
+class Activity extends StatefulWidget {
+  const Activity({super.key});
 
   @override
-  State<Announce> createState() => _AnnounceState();
+  State<Activity> createState() => _ActivityState();
 }
 
-class _AnnounceState extends State<Announce> {
+class _ActivityState extends State<Activity> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-        title: const Text('ANNOUNCEMENTS'),
+      appBar: AppBar(
+        title: const Text('ACTIVITIES'),
         titleSpacing: 00.0,
         centerTitle: true,
         backgroundColor: Color.fromARGB(87, 21, 204, 15),
@@ -22,7 +22,6 @@ class _AnnounceState extends State<Announce> {
         ),
         toolbarHeight: 50,
       ),
-     
     );
   }
 }

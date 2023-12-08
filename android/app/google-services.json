@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "674422943561",
-    "project_id": "skudush-f7ff6",
-    "storage_bucket": "skudush-f7ff6.appspot.com"
+    "project_number": "677776107304",
+    "project_id": "ahgcc-99ffd",
+    "storage_bucket": "ahgcc-99ffd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:674422943561:android:fe8fa39a5be434eff2b498",
+        "mobilesdk_app_id": "1:677776107304:android:6d8b3332134dabdbde121d",
         "android_client_info": {
-          "package_name": "com.example.app"
+          "package_name": "com.ahgcc.app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBCzdS_baaJ1cFEyUmWXUAIz_aWhfA5l8s"
+          "current_key": "AIzaSyDpRSak-SDq5B9YIIELst9y7GoOOtIItcI"
         }
       ],
       "services": {
