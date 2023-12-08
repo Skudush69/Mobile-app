@@ -203,7 +203,17 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+
+
+
   Future<void> registerUser() async {
+    if (nameController.text.isEmpty ||
+        phoneNumberController.text.isEmpty ||
+        emailController.text.isEmpty ||
+        passwordController.text.isEmpty) {
+      showFieldEmptyDialog();
+      return;
+    }
     try {
       UserCredential userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -227,6 +237,9 @@ class _SignupScreenState extends State<SignupScreen> {
           .doc(user?.uid)
           .set(userData);
 
+      // Send email verification
+      await user?.sendEmailVerification();    
+
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => HomeScreen()),
       );
@@ -238,6 +251,25 @@ class _SignupScreenState extends State<SignupScreen> {
       print('Error creating user: $e');
       // Handle errors, e.g., display an error message to the user
     }
+  }
+   void showFieldEmptyDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text('Please fill in all the fields.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override

@@ -144,7 +144,6 @@
 //   }
 // }
 
-
 //From chart
 
 // import 'package:app/screens/home_screen.dart';
@@ -333,7 +332,6 @@
 //   }
 // }
 
-
 //From Chart 2
 
 import 'package:app/screens/home_screen.dart';
@@ -352,17 +350,38 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
 
   Future<void> loginUser() async {
-    try {
+     try {
+    // Check if name, email, and password are provided
+    if (nameController.text.isEmpty ||
+        emailController.text.isEmpty ||
+        passwordController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please fill in all the fields')),
+      );
+      return; // Stop execution if any field is empty
+    }
+     
       // TODO: Implement Firebase Authentication logic here
 
       // Example: Check if email and password are valid
-      if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-       //TODO: Authenticate the user using Firebase Authentication
+      if (emailController.text.isNotEmpty &&
+          passwordController.text.isNotEmpty) {
+        //TODO: Authenticate the user using Firebase Authentication
         // For example:
-         await FirebaseAuth.instance.signInWithEmailAndPassword(
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
-         );
+        );
+
+         // Access the user data
+    //      final user = FirebaseAuth.instance.currentUser;
+    //      if (user == null || !user.emailVerified) {
+    //   ScaffoldMessenger.of(context).showSnackBar(
+    //     const SnackBar(content: Text('Authentication failed. Please verify your email.')),
+    //   );
+    //   return;
+    // }
+    
 
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => HomeScreen()),
@@ -371,16 +390,27 @@ class _LoginScreenState extends State<LoginScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Successfully Logged In')),
         );
-      } else {
+      } 
+      
+      else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Please enter email and password')),
         );
       }
-    } catch (e) {
-      print('Error logging in: $e');
-      // Handle errors, e.g., display an error message to the user
-    }
+      
+  //   } catch (e) {
+  //     print('Error logging in: $e');
+  //     // Handle errors, e.g., display an error message to the user
+  //   }
+  // }
+  } catch (e) {
+    print('Error logging in: $e');
+    // Handle errors, e.g., display an error message to the user
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Error logging in. Please try again later.')),
+    );
   }
+}
 
   @override
   Widget build(BuildContext context) {

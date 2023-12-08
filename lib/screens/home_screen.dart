@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   IconButton(
                     hoverColor:Colors.grey,
-                    color:Colors.black,
+                    color:Color.fromARGB(216, 22, 13, 191),
                     
                      icon: const Icon(
                       Icons.person,
@@ -52,17 +52,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const SizedBox(height: 20,),
-            //  ListTile(
-            //   title: const Text(
-            //     'PROFILE',
-            //     style: TextStyle(fontSize: 16.5,),
-            //   ),
-            //   textColor: Color.fromARGB(216, 22, 13, 191),
-            //   onTap: () {
-            //     Navigator.of(context).push(
-            //         MaterialPageRoute(builder: (context) => Profile()));
-            //   },
-            // ),
             const Divider(
               height: 5,
               color: Colors.black,

@@ -1,5 +1,7 @@
 import 'package:app/screens/login_screen.dart';
+import 'package:app/screens/privacy_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:app/screens/terms_screen.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -16,14 +18,14 @@ class _ProfileState extends State<Profile> {
         title: const Text('PROFILE'),
         titleSpacing: 00.0,
         centerTitle: true,
-        backgroundColor: Color.fromARGB(87, 21, 204, 15),
+        backgroundColor: const Color.fromARGB(87, 21, 204, 15),
         titleTextStyle: const TextStyle(
           color: Color.fromARGB(216, 22, 13, 191),
           fontSize: 25,
         ),
         toolbarHeight: 50,
       ),
-      body: Column(
+      body:  Column(
         children: [
           SizedBox(
             height: 20,
@@ -34,93 +36,21 @@ class _ProfileState extends State<Profile> {
               children: [
                 CircleAvatar(
                   radius: 50,
+                  child:Image.asset("images/ahgcc logo.png",height: 100, width: 100,),
                 )
               ],
             ),
           )),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Setting(),
-          // SafeArea(
-          //     child: Column(
-          //   children: [
-          //     SizedBox(
-          //       height: 20,
-          //     ),
-          //     SizedBox(
-          //       child: Row(
-          //         children: [
-          //           IconButton(onPressed: () {}, icon: Icon(Icons.people)),
-          //           TextButton(onPressed: () {}, child: Text("Invite friends"))
-          //         ],
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       height: 20,
-          //     ),
-          //     SizedBox(
-          //       child: Row(
-          //         children: [
-          //           IconButton(onPressed: () {}, icon: Icon(Icons.money)),
-          //           TextButton(onPressed: () {}, child: Text("Transactions"))
-          //         ],
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       height: 20,
-          //     ),
-          //     SizedBox(
-          //       child: Row(
-          //         children: [
-          //           IconButton(onPressed: () {}, icon: Icon(Icons.file_copy)),
-          //           TextButton(
-          //               onPressed: () {}, child: Text("Terms and Conditions"))
-          //         ],
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       height: 20,
-          //     ),
-          //     SizedBox(
-          //       child: Row(
-          //         children: [
-          //           IconButton(onPressed: () {}, icon: Icon(Icons.privacy_tip)),
-          //           TextButton(onPressed: () {}, child: Text("Privacy Policy"))
-          //         ],
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       height: 20,
-          //     ),
-          //     SizedBox(
-          //       child: Row(
-          //         children: [
-          //           IconButton(onPressed: () {}, icon: Icon(Icons.call)),
-          //           TextButton(onPressed: () {}, child: Text("Get Help"))
-          //         ],
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       height: 20,
-          //     ),
-          //     SizedBox(
-          //       child: Row(
-          //         children: [
-          //           IconButton(
-          //               onPressed: () {}, icon: Icon(Icons.email_rounded)),
-          //           TextButton(onPressed: () {}, child: Text("Feedback"))
-          //         ],
-          //       ),
-          //     ),
-          //     SizedBox(
-          //       height: 20,
-          //     ),
-          //   ],
-          // ))
         ],
       ),
     );
   }
 }
+
 class Setting extends StatelessWidget {
   const Setting({super.key});
 
@@ -129,42 +59,42 @@ class Setting extends StatelessWidget {
     return ListBody(
       children: [
         ListTile(
-          leading: Icon(Icons.person_add_alt_sharp),
+          leading: const Icon(Icons.person_add_alt_sharp),
           onTap: () {},
-          title: Text("Invite Friends"),
-        ),
-         ListTile(
-          leading: Icon(Icons.attach_money_rounded),
-          onTap: () {},
-          title: Text("Transaction"),
+          title: const Text("Invite Friends"),
         ),
         ListTile(
-          leading: Icon(Icons.filter_none_outlined),
+          leading: const Icon(Icons.attach_money_rounded),
           onTap: () {},
-          title: Text("Terms and conditions"),
+          title: const Text("Transaction"),
         ),
         ListTile(
-          leading: Icon(Icons.private_connectivity_outlined),
-          onTap: () {},
-          title: Text("Privacy Policy"),
+          leading: const Icon(Icons.filter_none_outlined),
+          onTap: () { Navigator.of(context).push(MaterialPageRoute(builder:(context) => const Terms()));},
+          title: const Text("Terms and conditions"),
         ),
         ListTile(
-          leading: Icon(Icons.call),
-          onTap: () {},
-          title: Text("Get Help"),
+          leading: const Icon(Icons.private_connectivity_outlined),
+          onTap: () { Navigator.of(context).push(MaterialPageRoute(builder:(context) => const Privacy()));},
+          title: const Text("Privacy Policy"),
         ),
         ListTile(
-          leading: Icon(Icons.email_outlined),
+          leading: const Icon(Icons.call),
           onTap: () {},
-          title: Text("Feedback"),
+          title: const Text("Get Help"),
         ),
         ListTile(
-          leading: Icon(Icons.logout),
+          leading: const Icon(Icons.email_outlined),
+          onTap: () {},
+          title: const Text("Feedback"),
+        ),
+        ListTile(
+          leading: const Icon(Icons.logout),
           onTap: () {
-             Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => LoginScreen()));
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => LoginScreen()));
           },
-          title: Text("Log Out"),
+          title: const Text("Log Out"),
         )
       ],
     );
