@@ -1,5 +1,6 @@
 import 'package:app/screens/pay_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class Fund extends StatefulWidget {
   const Fund({super.key});
@@ -51,7 +52,18 @@ class _FundState extends State<Fund> {
               },
             ),
             const SizedBox(height: 40,),
-          const Text('THANK YOU FOR YOUR CONTRIBUTION',style: TextStyle(fontSize: 20,color: Color.fromARGB(216, 22, 13, 191)),),
+            DefaultTextStyle(
+          style: const TextStyle(
+              fontSize: 20, color: Color.fromARGB(247, 13, 3, 86)),
+          child: AnimatedTextKit(
+            animatedTexts: [
+              WavyAnimatedText('THANK YOU FOR YOUR CONTRIBUTION'),
+            ],
+            isRepeatingAnimation: false,
+            onTap: () {},
+          ),
+        ),
+          // const Text('THANK YOU FOR YOUR CONTRIBUTION',style: TextStyle(fontSize: 20,color: Color.fromARGB(216, 22, 13, 191)),),
           ],
         ),
       ),
