@@ -440,8 +440,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: TextField(
                     controller: nameController,
                     decoration: const InputDecoration(
-                      labelText: 'Name',
-                      hintText: 'Enter your Name',
+                      labelText: 'Names',
+                      hintText: 'Enter your name',
                       filled: true,
                       fillColor: Color.fromARGB(87, 21, 204, 15),
                       contentPadding: EdgeInsets.all(5),

@@ -297,7 +297,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: TextField(
                     controller: nameController,
                     decoration: const InputDecoration(
-                      labelText: 'Name',
+                      labelText: 'Names',
                       hintText: 'Enter your name',
                       filled: true,
                       fillColor: Color.fromARGB(87, 21, 204, 15),

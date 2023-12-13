@@ -38,8 +38,11 @@ dependencies:
   firebase_core: ^2.21.0
   cloud_firestore: ^4.12.2
   firebase_auth: ^4.15.0
-  url_launcher: ^6.0.12
+  url_launcher: ^6.1.0  # Replace with the latest version
   animated_text_kit: ^4.2.2
+  image_picker: ^0.8.9
+ 
+  
 
 
 dev_dependencies:
