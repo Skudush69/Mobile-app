@@ -41,6 +41,10 @@ dependencies:
   url_launcher: ^6.1.0  # Replace with the latest version
   animated_text_kit: ^4.2.2
   image_picker: ^0.8.9
+  share: ^2.0.0
+  google_sign_in: ^5.2.1
+  sign_in_with_apple: ^5.0.0
+  
  
   
 

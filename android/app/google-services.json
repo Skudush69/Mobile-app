@@ -12,7 +12,12 @@
           "package_name": "com.ahgcc.app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "677776107304-m47tbej601j11e4bp0p35rrt0q0l7k35.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDpRSak-SDq5B9YIIELst9y7GoOOtIItcI"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "677776107304-m47tbej601j11e4bp0p35rrt0q0l7k35.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

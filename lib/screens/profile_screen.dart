@@ -148,19 +148,18 @@
 //     print('Could not launch $phoneNumber');
 //   }
 // }
-import 'dart:io';
 
-import 'package:app/screens/login_screen.dart';
-import 'package:app/screens/privacy_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:app/screens/login_screen.dart';
 import 'package:app/screens/terms_screen.dart';
+import 'package:app/screens/privacy_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:share/share.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({super.key});
+  const Profile({Key? key}) : super(key: key);
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -169,10 +168,6 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   late User currentUser;
   Map<String, dynamic>? userData;
-  File? _image; // Initialize with null
-
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _phoneNumberController = TextEditingController();
 
   @override
   void initState() {
@@ -189,33 +184,51 @@ class _ProfileState extends State<Profile> {
 
     setState(() {
       userData = userSnapshot.data() as Map<String, dynamic>;
-      _nameController.text = userData?['name'] ?? '';
-      _phoneNumberController.text = userData?['phoneNumber'] ?? '';
     });
   }
 
-  Future<void> _getImage() async {
-    await showModalBottomSheet(
+  void _shareAppLink(BuildContext context) {
+    Share.share(
+      'Check out this app: https://your-app-link.com',
+      subject: 'Check out this awesome app!',
+    );
+  }
+
+  void _shareDialog() {
+    showDialog(
       context: context,
       builder: (BuildContext context) {
-        return SafeArea(
-          child: Column(
+        return AlertDialog(
+          title: const Text('Choose a platform to share:'),
+          content: Column(
             mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
+            children: [
               ListTile(
-                leading: Icon(Icons.photo_library),
-                title: Text('Gallery'),
+                title: const Text('WhatsApp'),
                 onTap: () {
                   Navigator.pop(context);
-                  _pickImage(ImageSource.gallery);
+                  _shareOnWhatsApp();
                 },
               ),
               ListTile(
-                leading: Icon(Icons.camera_alt),
-                title: Text('Take Photo'),
+                title: const Text('Facebook'),
                 onTap: () {
                   Navigator.pop(context);
-                  _pickImage(ImageSource.camera);
+                  _shareOnFacebook();
+                },
+              ),
+              ListTile(
+                title: const Text('SMS'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _shareViaSMS();
+                },
+              ),
+              ListTile(
+                title: const Text('Other'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _shareAppLink(context);
                 },
               ),
             ],
@@ -225,56 +238,60 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  Future<void> _pickImage(ImageSource source) async {
-    final pickedFile = await ImagePicker().getImage(source: source);
-
-    setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
-      }
-    });
+  void _shareOnWhatsApp() async {
+    const whatsappLink = 'https://wa.me/?text=YourMessageHere';
+    if (await canLaunch(whatsappLink)) {
+      await launch(whatsappLink);
+    } else {
+      print('Could not launch WhatsApp');
+    }
   }
 
-  Future<void> _editProfile() async {
-    await showDialog(
+  void _shareOnFacebook() async {
+    const facebookLink = 'https://www.facebook.com/your_profile';
+    if (await canLaunch(facebookLink)) {
+      await launch(facebookLink);
+    } else {
+      print('Could not launch Facebook');
+    }
+  }
+
+  void _shareViaSMS() async {
+    const smsLink =
+        'sms:?body=Check out this awesome app: https://your-app-link.com';
+    if (await canLaunch(smsLink)) {
+      await launch(smsLink);
+    } else {
+      print('Could not launch SMS');
+    }
+  }
+
+  void _logOut(BuildContext context) {
+    showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Edit Profile'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: _nameController,
-                decoration: InputDecoration(labelText: 'Name'),
-              ),
-              TextField(
-                controller: _phoneNumberController,
-                decoration: InputDecoration(labelText: 'Phone Number'),
-              ),
-            ],
-          ),
+          title: const Text('Log Out'),
+          content: const Text('Are you sure you want to log out?'),
           actions: [
-            ElevatedButton(
+            TextButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
-            ElevatedButton(
-              onPressed: () async {
-                // Implement the logic to save changes to Firestore
-                await FirebaseFirestore.instance
-                    .collection('users')
-                    .doc(currentUser.uid)
-                    .update({
-                  'name': _nameController.text,
-                  'phoneNumber': _phoneNumberController.text,
-                });
+            TextButton(
+              onPressed: () {
                 Navigator.pop(context);
-                getUserData(); // Refresh the data after changes
+                FirebaseAuth.instance.signOut();
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                );
               },
-              child: Text('Save'),
+              child: const Text(
+                'Log Out',
+                style: TextStyle(color: Colors.red),
+              ),
             ),
           ],
         );
@@ -307,54 +324,41 @@ class _ProfileState extends State<Profile> {
                 children: [
                   CircleAvatar(
                     radius: 50,
-                    child: GestureDetector(
-                      onTap: _getImage,
-                      child: _image != null
-                          ? ClipOval(
-                              child: Image.file(
-                                _image!,
-                                width: 100,
-                                height: 100,
-                                fit: BoxFit.cover,
-                              ),
-                            )
-                          : userData?['profilePhotoUrl'] != null
-                              ? ClipOval(
-                                  child: Image.network(
-                                    userData?['profilePhotoUrl'],
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.cover,
-                                  ),
-                                )
-                              : Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Color.fromARGB(87, 21, 204, 15), // Placeholder color
-                                  ),
-                                  width: 100,
-                                  height: 100,
-                                  child: Icon(
-                                    Icons.person,
-                                    color:Color.fromARGB(216, 22, 13, 191),
-                                    size: 50,
-                                  ),
-                                ),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  ElevatedButton(
-                    onPressed: _editProfile,
-                    child: Text('Edit Profile'),
+                    child: userData?['profilePhotoUrl'] != null
+                        ? ClipOval(
+                            child: Image.network(
+                              userData?['profilePhotoUrl'],
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                        : Container(
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color.fromARGB(87, 21, 204, 15),
+                            ),
+                            width: 100,
+                            height: 100,
+                            child: const Icon(
+                              Icons.person,
+                              color: Color.fromARGB(216, 22, 13, 191),
+                              size: 50,
+                            ),
+                          ),
                   ),
                 ],
               ),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             height: 10,
           ),
-          Setting(userData: userData),
+          Setting(
+            userData: userData,
+            onInviteFriends: _shareDialog,
+            onLogOut: () => _logOut(context),
+          ),
         ],
       ),
     );
@@ -363,22 +367,23 @@ class _ProfileState extends State<Profile> {
 
 class Setting extends StatelessWidget {
   final Map<String, dynamic>? userData;
+  final VoidCallback? onInviteFriends;
+  final VoidCallback? onLogOut;
 
-  const Setting({Key? key, required this.userData}) : super(key: key);
+  const Setting(
+      {Key? key, required this.userData, this.onInviteFriends, this.onLogOut})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListBody(
       children: [
         ListTile(
-          title: Text('Name: ${userData?['name'] ?? "N/A"}'),
-        ),
-        ListTile(
           title: Text('Phone Number: ${userData?['phoneNumber'] ?? "N/A"}'),
         ),
         ListTile(
           leading: const Icon(Icons.person_add_alt_sharp),
-          onTap: () {},
+          onTap: onInviteFriends,
           title: const Text("Invite Friends"),
         ),
         ListTile(
@@ -407,6 +412,9 @@ class Setting extends StatelessWidget {
           onTap: () {
             _launchPhoneCall('tel:+254739942822');
           },
+          //         onTap: () {
+          //   _launchWhatsAppGroup('https://chat.whatsapp.com/CSc1Mj9x3FRBPL3mtcVA94');
+          // },
           title: const Text("Get Help"),
         ),
         ListTile(
@@ -416,10 +424,7 @@ class Setting extends StatelessWidget {
         ),
         ListTile(
           leading: const Icon(Icons.logout),
-          onTap: () {
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => LoginScreen()));
-          },
+          onTap: onLogOut,
           title: const Text("Log Out"),
         ),
       ],
@@ -434,3 +439,12 @@ void _launchPhoneCall(String phoneNumber) async {
     print('Could not launch $phoneNumber');
   }
 }
+
+
+// void _launchWhatsAppGroup(String groupLink) async {
+//   if (await canLaunch(groupLink)) {
+//     await launch(groupLink);
+//   } else {
+//     print('Could not launch $groupLink');
+//   }
+// }
